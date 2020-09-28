@@ -1,15 +1,22 @@
 package ru.netology.manager;
 
-import ru.netology.domain.Addition;
 import ru.netology.domain.MovieAdItem;
 
 public class MovieAdManager {
 
+    private int movieAdListLength = 10;
+
+    public MovieAdManager(int movieAdListLength) {
+        this.movieAdListLength = movieAdListLength;
+    }
+
+    public MovieAdManager() {
+    }
+
     private MovieAdItem[] items = new MovieAdItem[0];
 
-
     public void add(MovieAdItem item) {
-        int length = items.length +1;
+        int length = items.length + 1;
         MovieAdItem[] tmp = new MovieAdItem[length];
 
         System.arraycopy(items, 0, tmp, 0, items.length);
@@ -20,9 +27,16 @@ public class MovieAdManager {
     }
 
     public MovieAdItem[] getAll() {
-        MovieAdItem[] result = new MovieAdItem[items.length];
-        // перебираем массив в прямом порядке
-        // но кладём в результаты в обратном
+        int length = 0;
+        if (items.length < movieAdListLength) {
+            length = items.length;
+        }
+        if (items.length >= movieAdListLength) {
+            length = movieAdListLength;
+        }
+
+        MovieAdItem[] result = new MovieAdItem[length];
+
         for (int i = 0; i < result.length; i++) {
             int index = items.length - i - 1;
             result[i] = items[index];
@@ -30,34 +44,8 @@ public class MovieAdManager {
         return result;
     }
 
-
-    private Addition[] additions = new Addition[0];
-
+}
 
 
-    public void addAddition(Addition addition) {
-        int length = additions.length +1;
-        Addition[] tmp = new Addition[length];
-
-        System.arraycopy(additions, 0, tmp, 0, additions.length);
-
-        int lastIndex = tmp.length - 1;
-        tmp[lastIndex] = addition;
-        additions = tmp;
-    }
-
-    public Addition[]  getAllAdditions() {
-        Addition[] result = new Addition[additions.length];
-        // перебираем массив в прямом порядке
-        // но кладём в результаты в обратном
-        for (int i = 0; i < result.length; i++) {
-            int index = additions.length - i - 1;
-            result[i] = additions[index];
-        }
-        return result;
-    }
-
-
-    }
 
 
