@@ -11,6 +11,7 @@ public class MovieAdManager {
     }
 
     public MovieAdManager() {
+
     }
 
     private MovieAdItem[] items = new MovieAdItem[0];
@@ -27,15 +28,15 @@ public class MovieAdManager {
     }
 
     public MovieAdItem[] getAll() {
-        int length = 0;
+        int total = 0;
         if (items.length < movieAdListLength) {
-            length = items.length;
+            total = items.length;
         }
         if (items.length >= movieAdListLength) {
-            length = movieAdListLength;
+            total = movieAdListLength;
         }
 
-        MovieAdItem[] result = new MovieAdItem[length];
+        MovieAdItem[] result = new MovieAdItem[total];
 
         for (int i = 0; i < result.length; i++) {
             int index = items.length - i - 1;
@@ -44,7 +45,7 @@ public class MovieAdManager {
         return result;
     }
 
-}
+    }
 
 
 
