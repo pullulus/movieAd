@@ -20,10 +20,6 @@ public class MovieAdManagerNotEmptyDefaultTest {
     MovieAdItem ninth = new MovieAdItem(9, "Malasana", "horror","17.09.2020");
     MovieAdItem tenth = new MovieAdItem(10, "Antebellum", "horror","17.09.2020");
     MovieAdItem eleventh = new MovieAdItem(11, "Re loca", "comedy", "24.09.2020");
-    MovieAdItem  twelfth = new MovieAdItem(12, "Greenland", "apocalyptic action", "20.08.2020");
-    MovieAdItem thirteenth = new MovieAdItem(13, "The Nest", "thriller", "24.09.2020");
-    MovieAdItem fourteenth = new MovieAdItem(14, "Never Rarely Sometimes Always", "drama","17.09.2020");
-
 
     @BeforeEach
     public void setUp() {
@@ -42,12 +38,9 @@ public class MovieAdManagerNotEmptyDefaultTest {
         manager.add(eighth);
         manager.add(ninth);
         manager.add(tenth);
-        manager.add(eleventh);
-        manager.add(twelfth);
-        manager.add(thirteenth);
 
         MovieAdItem[] actual = manager.getAll();
-        MovieAdItem[] expected = new MovieAdItem[]{thirteenth, twelfth, eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth};
+        MovieAdItem[] expected = new MovieAdItem[]{tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
 
         assertArrayEquals(expected, actual);
     }
@@ -63,12 +56,9 @@ public class MovieAdManagerNotEmptyDefaultTest {
         manager.add(ninth);
         manager.add(tenth);
         manager.add(eleventh);
-        manager.add(twelfth);
-        manager.add(thirteenth);
-        manager.add(fourteenth);
 
         MovieAdItem[] actual = manager.getAll();
-        MovieAdItem[] expected = new MovieAdItem[]{fourteenth, thirteenth, twelfth, eleventh, tenth, ninth, eighth, seventh, sixth, fifth};
+        MovieAdItem[] expected = new MovieAdItem[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second};
 
         assertArrayEquals(expected, actual);
     }
@@ -82,13 +72,9 @@ public class MovieAdManagerNotEmptyDefaultTest {
         manager.add(seventh);
         manager.add(eighth);
         manager.add(ninth);
-        manager.add(tenth);
-        manager.add(eleventh);
-        manager.add(twelfth);
-
 
         MovieAdItem[] actual = manager.getAll();
-        MovieAdItem[] expected = new MovieAdItem[]{twelfth, eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third};
+        MovieAdItem[] expected = new MovieAdItem[]{ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
 
         assertArrayEquals(expected, actual);
     }

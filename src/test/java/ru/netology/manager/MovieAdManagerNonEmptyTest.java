@@ -14,9 +14,7 @@ public class MovieAdManagerNonEmptyTest {
     MovieAdItem fourth = new MovieAdItem(4, "The Gentlemen", "action comedy", "13.02.2020");
     MovieAdItem fifth = new MovieAdItem(5, "The Invisible Man", "science fiction horror", "05.03.2020");
     MovieAdItem sixth = new MovieAdItem(6, "Trolls World Tour", "animated film", "19.03.2020");
-    MovieAdItem seventh = new MovieAdItem(7, "Tenet", "action-thriller", "03.09.2020");
-    MovieAdItem eighth = new MovieAdItem(8, "Mulan", "action drama", "03.09.2020");
-    MovieAdItem ninth = new MovieAdItem(9, "Malasana", "horror","17.09.2020");
+
 
     @BeforeEach
     public void setUp() {
@@ -30,12 +28,9 @@ public class MovieAdManagerNonEmptyTest {
 
         manager.add(fourth);
         manager.add(fifth);
-        manager.add(sixth);
-        manager.add(seventh);
-        manager.add(eighth);
 
         MovieAdItem[] actual = manager.getAll();
-        MovieAdItem[] expected = new MovieAdItem[]{eighth, seventh, sixth, fifth, fourth};
+        MovieAdItem[] expected = new MovieAdItem[]{fifth, fourth, third, second, first};
 
         assertArrayEquals(expected, actual);
     }
@@ -46,12 +41,9 @@ public class MovieAdManagerNonEmptyTest {
         manager.add(fourth);
         manager.add(fifth);
         manager.add(sixth);
-        manager.add(seventh);
-        manager.add(eighth);
-        manager.add(ninth);
 
         MovieAdItem[] actual = manager.getAll();
-        MovieAdItem[] expected = new MovieAdItem[]{ninth, eighth, seventh, sixth, fifth};
+        MovieAdItem[] expected = new MovieAdItem[]{sixth, fifth, fourth, third, second};
 
         assertArrayEquals(expected, actual);
     }
@@ -60,12 +52,9 @@ public class MovieAdManagerNonEmptyTest {
     public void shouldAddUnderMovieAdListLength() {
 
         manager.add(fourth);
-        manager.add(fifth);
-        manager.add(sixth);
-        manager.add(seventh);
 
         MovieAdItem[] actual = manager.getAll();
-        MovieAdItem[] expected = new MovieAdItem[]{seventh, sixth, fifth, fourth, third};
+        MovieAdItem[] expected = new MovieAdItem[]{fourth, third, second, first};
 
         assertArrayEquals(expected, actual);
     }
