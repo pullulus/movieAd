@@ -1,6 +1,7 @@
 package ru.netology.manager;
 
 import ru.netology.domain.MovieAdItem;
+import ru.netology.repository.MovieAdRepository;
 
 public class MovieAdManager {
 
@@ -14,20 +15,19 @@ public class MovieAdManager {
 
     }
 
-    private MovieAdItem[] items = new MovieAdItem[0];
+    private MovieAdRepository repository;
+
+    public MovieAdManager (MovieAdRepository repository) {
+        this.repository = repository;
+    }
 
     public void add(MovieAdItem item) {
-        int length = items.length + 1;
-        MovieAdItem[] tmp = new MovieAdItem[length];
-
-        System.arraycopy(items, 0, tmp, 0, items.length);
-
-        int lastIndex = tmp.length - 1;
-        tmp[lastIndex] = item;
-        items = tmp;
+        repository.save(item);
     }
 
     public MovieAdItem[] getAll() {
+        MovieAdItem[] items = repository.findAll();
+        MovieAdItem[] tmp = new MovieAdItem[items.length];
         int total = 0;
         if (items.length < movieAdListLength) {
             total = items.length;
@@ -43,6 +43,10 @@ public class MovieAdManager {
             result[i] = items[index];
         }
         return result;
+    }
+
+    public void removeById(int id) {
+        repository.removeById(id);
     }
 
     }
